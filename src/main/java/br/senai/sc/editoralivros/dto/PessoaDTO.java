@@ -1,10 +1,13 @@
 package br.senai.sc.editoralivros.dto;
 
 import br.senai.sc.editoralivros.model.entities.Genero;
+import br.senai.sc.editoralivros.model.entities.Pessoa;
+import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
-
+@Getter
 public class PessoaDTO {
+
     @NotBlank
     private Long CPF;
     @NotBlank

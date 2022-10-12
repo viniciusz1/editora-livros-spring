@@ -18,6 +18,10 @@ public class PessoaService {
         return pessoaDAO.save(entity);
     }
 
+    public boolean existsById(Long cpf) {
+        return pessoaDAO.existsById(cpf);
+    }
+
     public Optional<Pessoa> findById(Long cpf) {
         return pessoaDAO.findById(cpf);
     }
@@ -32,5 +36,9 @@ public class PessoaService {
 
     public PessoaService(PessoaRepository pessoaDAO){
         this.pessoaDAO = pessoaDAO;
+    }
+
+    public boolean existsByEmail(String email) {
+        return pessoaDAO.existsByEmail(email);
     }
 }
