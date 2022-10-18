@@ -32,6 +32,18 @@ public class LivroController {
 
     }
 
+    @PutMapping("/update/{isbn}")
+    public ResponseEntity<Object> update(@RequestBody @Valid LivroDTO livro) {
+        Optional<Livro> livroOptional = livroService.findById(livro.getIsbn());
+        if(livroOptional.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Livro não encontrado");
+        }else{
+            Livro livroModel = new Livro();
+            BeanUtils.copyProperties(livro, livroModel);
+            return ResponseEntity.status(HttpStatus.OK).body(livroService.save(livroModel));
+        }
+    }
+
     @GetMapping("/id/{isbn}")
     public ResponseEntity<Object> findById(@PathVariable(value = "isbn") Long id) {
         Optional<Livro> livroOptional = livroService.findById(id);
@@ -58,7 +70,14 @@ public class LivroController {
     }
 
 
-    public void deleteById(Long id) {
-        livroService.deleteById(id);
+
+    @DeleteMapping("/delete/{isbn}")
+    public ResponseEntity<Object> delete(@PathVariable(value = "isbn") Long id) {
+        if(!livroService.existsById(id)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Livro não encontrado");
+        }else{
+            livroService.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Livro deletado com sucesso");
+        }
     }
 }
