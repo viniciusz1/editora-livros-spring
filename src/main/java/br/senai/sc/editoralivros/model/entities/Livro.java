@@ -2,10 +2,7 @@ package br.senai.sc.editoralivros.model.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_livros")
@@ -20,13 +17,15 @@ public class Livro {
     @Column(nullable = false, length = 50)
     private String titulo;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "cpf_autor", nullable = false)
     private Autor autor;
 
     @Column(nullable = false, unique = true)
     private Integer qntdPaginas;
 
-    @Column(nullable = true, length = 13, unique = true)
+    @ManyToOne
+    @JoinColumn(name = "cnpj_editora")
     private Editora editora;
 
     @Column(nullable = false)
@@ -35,7 +34,8 @@ public class Livro {
     @Column(nullable = false)
     private Double paginasRevisadas = 0.0;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "cpf_revisor")
     private Revisor revisor;
 
 }
