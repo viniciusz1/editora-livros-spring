@@ -1,9 +1,6 @@
 package br.senai.sc.editoralivros.model.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +11,11 @@ import javax.persistence.Table;
 @Table(name = "tb_livros")
 @AllArgsConstructor
 @Getter @Setter @EqualsAndHashCode
-
+@NoArgsConstructor
 public class Livro {
     @Id
     @Column(nullable = false, length = 13, unique = true)
-    private Integer ISBN;
+    private Long ISBN;
 
     @Column(nullable = false, length = 50)
     private String titulo;

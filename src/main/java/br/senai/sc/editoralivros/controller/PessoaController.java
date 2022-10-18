@@ -37,7 +37,7 @@ public class PessoaController {
                 .body(pessoaOptional.get());
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/login/{email}")
     public ResponseEntity<Object> findByEmail(@PathVariable(value = "email") String email) {
         Optional<Pessoa> pessoaOptional = pessoaService.findByEmail(email);
         if (pessoaOptional.isEmpty()) {
