@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
     List<Livro> findByStatus(Status status);
-    List<Livro> findByAutor(Autor autor);
+    List<Livro> findByAutores(Autor autor);
 }

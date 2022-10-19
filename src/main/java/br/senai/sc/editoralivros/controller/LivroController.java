@@ -33,10 +33,9 @@ public class LivroController {
         livroModel.setStatus(Status.AGUARDANDO_REVISAO);
         return ResponseEntity.status(HttpStatus.OK).body(
                 livroService.save(livroModel));
-
     }
 
-    @PutMapping("/update/{isbn}")
+    @PutMapping
     public ResponseEntity<Object> update(@RequestBody @Valid LivroDTO livro) {
         Optional<Livro> livroOptional = livroService.findById(livro.getIsbn());
         if(livroOptional.isEmpty()){
@@ -44,11 +43,12 @@ public class LivroController {
         }else{
             Livro livroModel = new Livro();
             BeanUtils.copyProperties(livro, livroModel);
+            livroModel.setStatus(Status.AGUARDANDO_REVISAO);
             return ResponseEntity.status(HttpStatus.OK).body(livroService.save(livroModel));
         }
     }
 
-    @GetMapping("/id/{isbn}")
+    @GetMapping("/{isbn}")
     public ResponseEntity<Object> findById(@PathVariable(value = "isbn") Long id) {
         Optional<Livro> livroOptional = livroService.findById(id);
         if(livroOptional.isEmpty()){
@@ -72,8 +72,6 @@ public class LivroController {
     public ResponseEntity<List<Livro>> findAll() {
         return ResponseEntity.status(HttpStatus.FOUND).body(livroService.findAll());
     }
-
-
 
     @DeleteMapping("/delete/{isbn}")
     public ResponseEntity<Object> delete(@PathVariable(value = "isbn") Long id) {
