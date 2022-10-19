@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Livro {
     @Id
     @Column(nullable = false, length = 13, unique = true)
-    private Long ISBN;
+    private Long isbn;
 
     @Column(nullable = false, length = 50)
     private String titulo;
@@ -21,8 +21,8 @@ public class Livro {
     @JoinColumn(name = "cpf_autor", nullable = false)
     private Autor autor;
 
-    @Column(nullable = false, unique = true)
-    private Integer qntdPaginas;
+    @Column(nullable = false)
+    private Integer qtdPaginas;
 
     @ManyToOne
     @JoinColumn(name = "cnpj_editora")

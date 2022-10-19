@@ -3,6 +3,7 @@ package br.senai.sc.editoralivros.repository;
 import br.senai.sc.editoralivros.model.entities.Autor;
 import br.senai.sc.editoralivros.model.entities.Livro;
 import br.senai.sc.editoralivros.model.entities.Status;
+import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

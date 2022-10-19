@@ -53,7 +53,7 @@ public class PessoaController {
     public ResponseEntity<Object> save(
             @RequestBody @Valid PessoaDTO pessoaDTO) {
 
-        if (pessoaService.existsById(pessoaDTO.getCPF())) {
+        if (pessoaService.existsById(pessoaDTO.getCpf())) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Já existe um registro com esse CPF! hehe");
         }

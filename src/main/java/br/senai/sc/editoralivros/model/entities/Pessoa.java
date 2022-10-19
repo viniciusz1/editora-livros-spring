@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Pessoa {
     @Id
     @Column(length = 11, nullable = false, unique = true)
-    private Long CPF;
+    private Long cpf;
     @Column(length = 50, nullable = false)
     private String nome;
     @Column(length = 100, nullable = false)

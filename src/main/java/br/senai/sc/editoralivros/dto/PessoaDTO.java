@@ -8,17 +8,17 @@ import javax.validation.constraints.NotBlank;
 @Getter
 public class PessoaDTO {
 
-    @NotBlank
-    private Long CPF;
-    @NotBlank
+//    @NotBlank
+    private Long cpf;
+//    @NotBlank
     private String nome;
-    @NotBlank
+//    @NotBlank
     private String sobrenome;
-    @NotBlank
+//    @NotBlank
     private String email;
-    @NotBlank
+ //   @NotBlank
     private String senha;
-    @NotBlank
+//    @NotBlank
     private Genero genero;
 
 }
