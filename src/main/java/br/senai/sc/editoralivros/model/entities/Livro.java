@@ -1,6 +1,7 @@
 package br.senai.sc.editoralivros.model.entities;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
@@ -41,4 +42,17 @@ public class Livro {
     @JoinColumn(name = "cpf_revisor")
     private Revisor revisor;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Arquivo arquivo;
+
+
+    public void setArquivo(MultipartFile file) {
+        try{
+        this.arquivo = new Arquivo(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
 }
