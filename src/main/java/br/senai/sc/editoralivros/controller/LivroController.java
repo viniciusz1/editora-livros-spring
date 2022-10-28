@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -86,6 +88,12 @@ public class LivroController {
 
     @GetMapping("/page")
     public ResponseEntity<Page<Livro>> findAllPage(
+            @PageableDefault(
+                    page = 2,
+                    size =9,
+                    sort = "isbn",
+                    direction = Sort.Direction.ASC
+            )
             Pageable pageable
     ) {
         return ResponseEntity.status(HttpStatus.FOUND).body(livroService.findAll(pageable));
