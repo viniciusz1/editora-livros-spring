@@ -36,7 +36,8 @@ public class AutenticacaoFiltro extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(
                     usernamePasswordAuthenticationToken
             );
-        } else if(!request.getRequestURI().equals("/login")) {
+        } else if(!request.getRequestURI().equals("/editora-livros-api/login") ||
+        !request.getRequestURI().equals("/editora-livros-api/usuarios")) {
             response.setStatus(401);
         }
         else {

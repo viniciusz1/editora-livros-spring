@@ -22,12 +22,17 @@
 //    @Autowired
 //    private JpaService jpaService;
 //
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
+////    @Autowired
+////    private AuthenticationManager authenticationManager;
 //
 //    @PostMapping
 //    public ResponseEntity<Object> autenticacao(
-//            @RequestBody @Valid UsuarioDTO usuarioDTO) {
+//            @RequestBody @Valid UsuarioDTO usuarioDTO,
+////            Authentication authentication
+//    ) {
+//
+//
+//
 //
 //        UsernamePasswordAuthenticationToken authenticationToken =
 //                new UsernamePasswordAuthenticationToken(
