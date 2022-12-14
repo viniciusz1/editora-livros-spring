@@ -10,10 +10,10 @@ import java.util.Collection;
 public class UserJPA implements UserDetails {
     private Collection<GrantedAuthority> authorities;
     private Pessoa pessoa;
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
+    private boolean accountNonExpired=true;
+    private boolean accountNonLocked=true;
+    private boolean credentialsNonExpired=true;
+    private boolean enabled=true;
 
     public UserJPA(Pessoa pessoa) {
         this.pessoa = pessoa;
